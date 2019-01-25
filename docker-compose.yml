@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:latest'
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8081:80'
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./api
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+    environment:
+      - SECRET=thisisntsecure
+      - DATABASEURL=mongodb://mongo:27017/sprinkle
+      - PORT=8083
