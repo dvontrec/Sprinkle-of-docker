@@ -14,3 +14,15 @@ after_success:
   #  Takes images and push to docker hub
   - docker push dvontrec/sprinkle-of-api
   - docker push dvontrec/sprinkle-of-nginx
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: Sprinkle Of Jeezy
+  env: SprinkleOfJeezy-env
+  bucket_name: elasticbeanstalk-us-east-1-092753704309
+  bucket_path: sprinkle-of-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_ACCESS_KEY:
+    secure: $AWS_SECRET_KEY
