@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+before_install:
+  # Should build file for tests
+scripts:
+  # Should add api tests
+after_success:
+  - docker build -t dvontrec/sprinkle-of-api ./api
+  - docker build -t dvontrec/sprinkle-of-nginx ./nginx
+  # Log into docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #  Takes images and push to docker hub
+  - docker push dvontrec/sprinkle-of-api
+  - docker push dvontrec/sprinkle-of-nginx
