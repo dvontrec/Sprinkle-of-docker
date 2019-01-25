@@ -1,0 +1,25 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "api",
+      "image": "dvontrec/sprinkle-of-api",
+      "hostname": "api",
+      "essential": false,
+      "memory": 218
+    },
+    {
+      "name": "nginx",
+      "image": "dvontrec/sprinkle-of-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["api"],
+      "memory": 128
+    }
+  ]
+}
