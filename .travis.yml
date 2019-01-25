@@ -5,7 +5,7 @@ services:
 # Should build file for tests
 # scripts:
 # Should add api tests
-after_success:
+before_deploy:
   - docker build -t dvontrec/sprinkle-of-api ./api
   - docker build -t dvontrec/sprinkle-of-nginx ./nginx
   # Log into docker cli
