@@ -1,10 +1,10 @@
 sudo: required
 services:
   - docker
-before_install:
-  # Should build file for tests
-scripts:
-  # Should add api tests
+# before_install:
+# Should build file for tests
+# scripts:
+# Should add api tests
 after_success:
   - docker build -t dvontrec/sprinkle-of-api ./api
   - docker build -t dvontrec/sprinkle-of-nginx ./nginx
