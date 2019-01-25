@@ -5,7 +5,7 @@ before_install:
   - docker build -t dvontrec/api-test -f ./api/Dockerfile.dev ./api
 scripts:
   # Should add api tests
-  - docker run ndvontrec/api-test ls
+  - docker run dvontrec/api-test ls
 before_deploy:
   - docker build -t dvontrec/sprinkle-of-api ./api
   - docker build -t dvontrec/sprinkle-of-nginx ./nginx
