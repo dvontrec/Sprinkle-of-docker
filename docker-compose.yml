@@ -20,3 +20,4 @@ services:
       - SECRET=thisisntsecure
       - DATABASEURL=mongodb://mongo:27017/sprinkle
       - PORT=8083
+      - NODE_ENV=development
